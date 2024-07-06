@@ -53,7 +53,10 @@
 #footer {
   background: #016b6b;
   border-top: solid 1px #033d3d;
-  padding: 20px 0;
+  .footer-container {
+    padding: 20px 0;
+    background: #016b6b;
+  }
   .left{
     width: 700px;
     color: #FFF;
@@ -120,7 +123,7 @@
 @media screen and (min-width: 769px) { 
    #footer {
      .footer-container {
-      width: 1200px;
+      min-width: 1200px;
     }
    }
 }
