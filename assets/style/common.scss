@@ -1,0 +1,142 @@
+
+/** 全局样式 */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a,
+a:focus,
+a:hover {
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  li {
+    text-decoration: none;
+    margin: 0;
+  }
+}
+
+/** 公共类名-样式 */
+
+.flex {
+  display: flex;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-direction-column {
+  flex-direction: column;
+}
+.margin-auto {
+  margin: auto;
+}
+.margin-0-auto {
+  margin: 0 auto;
+}
+.inline-flex {
+  display: inline-flex;
+}
+.block {
+  display: block;
+}
+.inline-block {
+  display: inline-block;
+}
+.space-between {
+  justify-content: space-between;
+}
+.space-around {
+  justify-content: space-around;
+}
+.align-items-center {
+  align-items: center;
+}
+.text-align-center {
+  text-align: center;
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
+.font-size-14 {
+  font-size: 14px;
+}
+.font-size-16 {
+  font-size: 16px;
+}
+.font-size-18 {
+  font-size: 18px;
+}
+.font-weight-bold {
+  font-weight: bold;
+}
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.font-color-333 {
+  color: #333;
+}
+
+.vertical-align-middle {
+  vertical-align: middle;
+}
+.vertical-align-top {
+  vertical-align: top;
+}
+.vertical-align-bottom {
+  vertical-align: bottom;
+}
+
+.w1200px {
+  width: 1200px;
+}
+.w100Per {
+  width: 100%;
+}
+.h100Per {
+  height: 100%;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+/** -------------- animation start ------------- */
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+/** ------------- animation end -------------- */

@@ -1,0 +1,8 @@
+
+html.moha-medical {
+  /* element-plus */
+  --el-color-primary: #016B6B;
+  --el-menu-hover-bg-color: RGB(1,107,107, .1);
+  /* vant */
+  --van-sidebar-width: 100%;
+}
