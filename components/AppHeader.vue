@@ -6,6 +6,7 @@ interface treeItem {
 }
 interface RoutesTree {
   text: string
+  className?: string
   children: treeItem[]
 }
 const routeTree: RoutesTree[] = [
@@ -62,6 +63,14 @@ const routeTree: RoutesTree[] = [
       { text: "partner", id: "/other/partner" },
       { text: "Blogroll", id: "/other/blogroll" },
     ]
+  },
+  {
+    text: "Language",
+    className: "custom-tree-class",
+    children: [
+      { text: "English", id: "en" },
+      { text: "简体中文", id: "zh" }
+    ]
   }
 ]
 </script>
@@ -70,19 +79,35 @@ const router = useRouter()
 const activeIndex = ref<string>("home")
 const showPopup = ref<boolean>(false)
 const activeName = ref<string[]>(["home"])
-const activeRoute = ref<string>("/home")
-const activeRouteIndex = ref(0)
+const activeRoute = ref<string>("/")
+const activeRouteIndex = ref<number>(0)
+let langIds: string[] = []
+onMounted(() => {
+  langIds = localStorage.getItem("langIds") ?  JSON.parse(localStorage.getItem("langIds")!) : []
+})
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
 const openPopover = () => {
   showPopup.value = true
 }
-const handleClickItem = (item: treeItem) => { 
+// 移动端菜单切换和语言切换
+const handleClickItem = (item: treeItem) => {
   console.log(item)
+  if (langIds.includes(item.id)) {
+    showToast(item.text);
+    return
+  }
   router.push({
     path: item.id
   })
+}
+// pc端语言切换
+const handleChangeLangPc = (command: string) => { 
+  if (langIds.includes(command)) {
+    ElMessage.info(command);
+    return
+  }
 }
 </script>
 
@@ -121,7 +146,7 @@ const handleClickItem = (item: treeItem) => {
           </div>
           <div class="qrCode-wrapper"><img class="w100Per h100Per" src="~assets/image/qrCode.jpg" alt=""></div>
           <div class="lang-wrapper">
-            <el-dropdown>
+            <el-dropdown @command="handleChangeLangPc">
               <span class="el-dropdown-link">
                 Language
                 <el-icon class="el-icon--right">
@@ -130,8 +155,8 @@ const handleClickItem = (item: treeItem) => {
               </span>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item>English</el-dropdown-item>
-                  <el-dropdown-item>简体中文</el-dropdown-item>
+                  <el-dropdown-item command="en">English</el-dropdown-item>
+                  <el-dropdown-item command="zh">简体中文</el-dropdown-item>
                 </el-dropdown-menu>
               </template>
             </el-dropdown>
@@ -196,6 +221,7 @@ const handleClickItem = (item: treeItem) => {
           v-model:active-id="activeRoute"
            v-model:main-active-index="activeRouteIndex"
           :items="routeTree"
+          height="100vh"
           @click-item="handleClickItem"
         />
       </van-popup>
@@ -229,6 +255,9 @@ const handleClickItem = (item: treeItem) => {
     &::last-child {
       border-bottom: none;
     }
+  }
+  :deep(.van-tree-select__nav ){
+    flex: 1.5
   }
 }
 @media screen and (min-width: 769px) {

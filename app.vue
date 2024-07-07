@@ -8,6 +8,9 @@
 </template>
 
 <script setup lang="ts">
+onMounted(() => { 
+  localStorage.setItem("langIds", JSON.stringify([ "en", "zh" ]))
+})
 
 </script>
 

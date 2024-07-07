@@ -3,18 +3,19 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: [
     "/assets/style/iconfont.css",
+    "/assets/style/common.css",
     "element-plus/dist/index.css",
     "element-plus/theme-chalk/display.css",
-     "/assets/style/element-plus.css",
+     "/assets/style/library.css",
   ],
   vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "@/assets/style/common.scss" as *;',
-        }
-      },
-    },
+    // css: {
+    //   preprocessorOptions: {
+    //     scss: {
+    //       additionalData: '@use "@/assets/style/common.scss" as *;',
+    //     }
+    //   },
+    // },
   },
   app: {
     head: {

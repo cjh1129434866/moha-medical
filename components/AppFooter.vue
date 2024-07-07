@@ -96,10 +96,12 @@
     height: 1px;
   }
   .link {
+    padding-left: 10px;
+    padding-right: 10px;
     margin-top: 20px;
     padding-top: 10px;
-    height: 40px;
     line-height: 40px;
+    min-height: 40px;
     border-top: solid 1px #035353;
     overflow: hidden;
     li {

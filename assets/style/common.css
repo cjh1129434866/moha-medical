@@ -140,3 +140,23 @@ ul {
   }
 }
 /** ------------- animation end -------------- */
+
+/** -------------- 公共响应式 start -------------*/
+@media screen and (max-width: 768px) {
+  .app-container {
+    min-height: calc(100vh - 556px);
+  }
+  .page-content-container {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .app-container {
+    min-height: calc(100vh - 498px);
+  }
+  .page-content-container {
+    width: 1200px;
+  }
+}
+/** -------------- 公共响应式 end -------------*/
